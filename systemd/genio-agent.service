@@ -1,0 +1,24 @@
+[Unit]
+Description=Genio Voice Agent (Porcupine + HiveMQ Cloud + n8n)
+After=network-online.target sound.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi
+Group=audio
+EnvironmentFile=/etc/genio/genio.env
+ExecStart=/opt/genio/venv/bin/genioctl run --config /etc/genio/config.yaml
+Restart=always
+RestartSec=3
+WorkingDirectory=/opt/genio
+StandardOutput=append:/var/log/genio/agent.log
+StandardError=append:/var/log/genio/agent.log
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+ReadWritePaths=/var/log/genio /tmp /etc/genio
+
+[Install]
+WantedBy=multi-user.target

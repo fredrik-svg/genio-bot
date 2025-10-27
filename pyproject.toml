@@ -1,0 +1,28 @@
+[build-system]
+requires = ["hatchling>=1.21.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "genio-voice-agent"
+version = "0.1.0"
+description = "Raspberry Pi 5 voice agent: Porcupine + Whisper + Piper + HiveMQ Cloud (n8n backend)"
+authors = [{ name = "Genio" }]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "pvporcupine>=3.0.0",
+  "paho-mqtt>=2.0.0",
+  "faster-whisper>=1.0.0",
+  "sounddevice>=0.4.6",
+  "webrtcvad>=2.0.10",
+  "pydub>=0.25.1",
+  "pyyaml>=6.0.1",
+  "rich>=13.7.1"
+]
+
+[project.scripts]
+genioctl = "genio.cli.run:main"
+
+[tool.flake8]
+max-line-length = 100
+exclude = ["build", "dist", "genio/__version__.py"]

@@ -1,0 +1,10 @@
+pvporcupine
+paho-mqtt
+faster-whisper
+sounddevice
+webrtcvad
+pydub
+pyyaml
+rich
+pytest
+flake8
