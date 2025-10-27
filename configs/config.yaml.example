@@ -10,35 +10,3 @@ mqtt:
   response_topic: genio/pi5/resp
   state_topic: genio/pi5/state
   events_topic: genio/pi5/events
-
-wakeword:
-  engine: porcupine
-  keyword_path: /opt/genio/models/porcupine/hey-genio.ppn
-  model_path: /opt/genio/models/porcupine/porcupine_params.pv
-  sensitivity: 0.6
-  device_index: null
-  device_name: null
-
-vad:
-  mode: 2
-  frame_ms: 30
-
-stt:
-  engine: whisper
-  model: tiny
-  language: sv
-
-tts:
-  engine: piper
-  voice_path: /opt/genio/models/piper/sv-SE-nordic.onnx
-  sample_rate: 22050
-  output_device: null
-
-logging:
-  level: INFO
-  path: /var/log/genio/agent.jsonl
-
-agent:
-  id: pi-05
-  mqtt_timeout_s: 10
-  stt_timeout_s: 15

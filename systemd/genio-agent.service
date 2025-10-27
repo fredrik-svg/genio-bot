@@ -1,5 +1,5 @@
 [Unit]
-Description=Genio Voice Agent (Porcupine + HiveMQ Cloud + n8n)
+Description=Genio Voice Agent
 After=network-online.target sound.target
 Wants=network-online.target
 
