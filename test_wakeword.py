@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """Testa Porcupine wake word lokalt.
-Krav: pvporcupine, sounddevice
+Krav: pvporcupine, sounddevice, numpy
 Använd:
   python3 test_wakeword.py \
       --keyword /opt/genio/models/porcupine/hey-genio.ppn \

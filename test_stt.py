@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """Testa STT (faster-whisper).
-Krav: faster-whisper, sounddevice (om du vill spela in), numpy
+Krav: faster-whisper, sounddevice (om du vill spela in)
 Använd:
   python3 test_stt.py --wav /path/to/file.wav \
       --model tiny --lang sv
