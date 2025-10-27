@@ -5,42 +5,25 @@ build-backend = "hatchling.build"
 [project]
 name = "genio-voice-agent"
 version = "0.1.0"
-description = "Raspberry Pi 5 voice agent: Porcupine + Whisper + Piper + HiveMQ Cloud (n8n backend)"
-authors = [{ name = "Genio" }]
+description = "Genio Voice Agent for Raspberry Pi 5"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-  "pvporcupine>=3.0.0",
-  "paho-mqtt>=2.0.0",
-  "faster-whisper>=1.0.0",
-  "sounddevice>=0.4.6",
-  "webrtcvad>=2.0.10",
-  "pydub>=0.25.1",
-  "pyyaml>=6.0.1",
-  "rich>=13.7.1"
+    "paho-mqtt",
+    "pvporcupine",
+    "faster-whisper",
+    "sounddevice",
+    "webrtcvad",
+    "pydub",
+    "pyyaml",
+    "rich"
 ]
 
 [project.scripts]
 genioctl = "genio.cli.run:main"
 
-[tool.flake8]
-max-line-length = 100
-exclude = ["build", "dist", "genio/__version__.py"]
-
 [tool.hatch.build.targets.wheel]
-# Tala om vilka paketmappar som ska med i wheel:et
 packages = ["genio"]
 
 [tool.hatch.build.targets.sdist]
-# Valfritt men praktiskt: ta med konfigar, systemd, scripts m.m. i sdist
-include = [
-  "genio",
-  "configs",
-  "systemd",
-  "scripts",
-  "README.md",
-  "LICENSE",
-  "requirements.txt",
-  "constraints.txt",
-  "pyproject.toml"
-]
+include = ["genio", "configs", "systemd", "scripts", "README.md", "pyproject.toml"]
