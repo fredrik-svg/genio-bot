@@ -3,21 +3,25 @@
 """Testa Porcupine wake word lokalt.
 Krav: pvporcupine, sounddevice
 Använd:
-  python3 test_wakeword.py --keyword /opt/genio/models/porcupine/hey-genio.ppn --sensitivity 0.6
+  python3 test_wakeword.py \
+      --keyword /opt/genio/models/porcupine/hey-genio.ppn \
+      --sensitivity 0.6
 Valfritt:
-  --device-index N  (ALSA index)  eller  --device-name "hw:CARD=...,DEV=..."
+  --device-index N  (ALSA index)  eller
+  --device-name "hw:CARD=...,DEV=..."
 """
 import argparse
-import sys
-import time
 import pvporcupine
 import sounddevice as sd
 import numpy as np
 
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--keyword", required=True, help="Sökväg till .ppn")
-    ap.add_argument("--model", default=None, help="Sökväg till porcupine_params.pv (om krävs)")
+    ap.add_argument("--keyword", required=True,
+                    help="Sökväg till .ppn")
+    ap.add_argument("--model", default=None,
+                    help="Sökväg till porcupine_params.pv (om krävs)")
     ap.add_argument("--sensitivity", type=float, default=0.6)
     ap.add_argument("--device-index", type=int, default=None)
     ap.add_argument("--device-name", type=str, default=None)
@@ -30,15 +34,6 @@ def main():
     )
 
     device = args.device_name if args.device_name else args.device_index
-
-    def callback(indata, frames, time_info, status):
-        if status:
-            # print(status, file=sys.stderr)
-            pass
-        # indata is bytes when using RawInputStream, but float array when InputStream.
-        # We will use RawInputStream for exact int16 PCM.
-        # (this callback will not be used; see below)
-        pass
 
     print("🎧 Lyssnar... säg wakeword. Avsluta med Ctrl+C")
     detected = 0
@@ -64,6 +59,7 @@ def main():
         pass
     finally:
         porcupine.delete()
+
 
 if __name__ == "__main__":
     main()
