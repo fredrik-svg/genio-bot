@@ -26,9 +26,9 @@ def main():
     args = ap.parse_args()
 
     cmd = [args.piper_bin, "--model", args.model,
-           "--output_file", args.out, "--text", args.text]
+           "--output_file", args.out]
     print("🔊 Kör:", " ".join(cmd))
-    subprocess.run(cmd, check=True)
+    subprocess.run(cmd, input=args.text, text=True, check=True)
 
     play = ["aplay"]
     if args.device:
